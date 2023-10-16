@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slick-track {
+  display: flex;
+  /* gap: 1rem */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: red;
+
+}
+
+.slick-dots li button:before {
+  color: red;
+}
+
+.ReactModal__Overlay {
+  position: fixed !important;
+  z-index: 200 !important;
+}

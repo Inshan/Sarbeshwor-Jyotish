@@ -1,0 +1,575 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+             id="navbarBlur"
+             navbar-scroll="true">
+            <div class="container-fluid py-3 px-3">
+                <nav aria-label="breadcrumb">
+                    <h6 class="font-weight-bolder mb-0 text-lg mx-4">MAIN NAVIGATION UPDATE</h6>
+                </nav>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <style>
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:active {
+      background-color: #3e8948;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    .container-fluid {
+        max-width: 99%;
+    overflow: hidden;
+        padding: 0 20px; 
+      }
+        </style>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mx-5">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gray-800 radius-sm pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3 text-lg">UPDATE NAVIGATION</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <form method="post" action="" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="d-flex align-items-center mx-3">
+                                    <label class="mr-3">Name:</label>
+                                    <div class="col-4">
+                                        <input type="text" name="name" value="{{ data.name }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-4"></div>
+                                {% comment %} ................. ..............{% endcomment %}
+                                <div class="d-flex align-items-center mx-3">
+                                    <label class="mr-1">Caption:</label>
+                                    <div class="col-6">
+                                        <input type="text" name="caption" value="{{ data.caption }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-3">Status:</label>
+                                    <select name="status" value="{{ data.status }}">
+                                        <option value="">Select Status</option>
+                                        <option value="Publish"{% if data.status == "Publish" %}selected{% endif %}>Publish</option>
+                                        <option value="Draft"{% if data.status == "Draft" %}selected{% endif %}>Draft</option>
+                                    </select>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label class="mr-2">Position:</label>
+                                    <div class="col-1">
+                                        <input type="number" name="position" value="{{ data.position }}" />
+                                    </div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label>Page Type</label>
+                                    <select type="text" name="page_type" value="{{ data.page_type }}">
+                                        <option value="">Select Page Type</option>
+                                        <option value="Home"
+                                                {% if data.page_type == "Home" %}selected="selected"{% endif %}>
+                                            Home
+                                        </option>
+                                        <option value="Aboutus"
+                                                {% if data.page_type == "Aboutus" %}selected="selected"{% endif %}>
+                                            Aboutus
+                                        </option>
+                                        <option value="Portfolio"
+                                                {% if data.page_type == "Portfolio" %}selected="selected"{% endif %}>
+                                            Portfolio
+                                        </option>
+                                        <option value="Profile"
+                                                {% if data.page_type == "Profile" %}selected="selected"{% endif %}>
+                                            Profile
+                                        </option>
+                                        <option value="ProfileMembers"
+                                                {% if data.page_type == "ProfileMembers" %}selected="selected"{% endif %}>
+                                            ProfileMembers
+                                        </option>
+                                        <option value="Service"
+                                                {% if data.page_type == "Service" %}selected="selected"{% endif %}>
+                                            Service
+                                        </option>
+                                        <option value="ServiceData"
+                                                {% if data.page_type == "ServiceData" %}selected="selected"{% endif %}>
+                                            ServiceData
+                                        </option>
+                                        <option value="Course"
+                                                {% if data.page_type == "Course" %}selected="selected"{% endif %}>
+                                            Course
+                                        </option>
+                                        <option value="Course Data"
+                                                {% if data.page_type == "Course Data" %}selected="selected"{% endif %}>
+                                            Course Data
+                                        </option>
+                                        <option value="Aboutus"
+                                                {% if data.page_type == "Aboutus" %}selected="selected"{% endif %}>
+                                            Aboutus
+                                        </option>
+                                        <option value="Banner"
+                                                {% if data.page_type == "Banner" %}selected="selected"{% endif %}>
+                                            Banner
+                                        </option>
+                                        <option value="BannerData"
+                                                {% if data.page_type == "BannerData" %}selected="selected"{% endif %}>
+                                            BannerData
+                                        </option>
+                                        <option value="ServiceHome"
+                                                {% if data.page_type == "ServiceHome" %}selected="selected"{% endif %}>
+                                            ServiceHome
+                                        </option>
+                                        <option value="ServiceHomeData"
+                                                {% if data.page_type == "ServiceHomeData" %}selected="selected"{% endif %}>
+                                            ServiceHomeData
+                                        </option>
+                                        <option value="CourseHome"
+                                                {% if data.page_type == "CourseHome" %}selected="selected"{% endif %}>
+                                            CourseHome
+                                        </option>
+                                        <option value="Testimonial"
+                                                {% if data.page_type == "Testimonial" %}selected="selected"{% endif %}>
+                                            Testimonial
+                                        </option>
+                                        <option value="TestimonialData"
+                                                {% if data.page_type == "TestimonialData" %}selected="selected"{% endif %}>
+                                            TestimonialData
+                                        </option>
+                                        <option value="LatestNews"
+                                                {% if data.page_type == "LatestNews" %}selected="selected"{% endif %}>
+                                            Zodiac
+                                        </option>
+                                        <option value="LatestNews"
+                                                {% if data.page_type == "LatestNews" %}selected="selected"{% endif %}>
+                                            LatestNews
+                                        </option>
+                                        <option value="LatestNewsData"
+                                                {% if data.page_type == "LatestNewsData" %}selected="selected"{% endif %}>
+                                            LatestNewsData
+                                        </option>
+                                        <option value="Appointment"
+                                                {% if data.page_type == "Appointment" %}selected="selected"{% endif %}>
+                                            Appointment
+                                        </option>
+                                        <option value="Appointment1"
+                                        {% if data.page_type == "Appointment1" %}selected="selected"{% endif %}>
+                                    Appointment1
+                                </option>
+                                        <option value="Rashifal"
+                                                {% if data.page_type == "Rashifal" %}selected="selected"{% endif %}>
+                                            Rashifal
+                                        </option>
+                                        <option value="DailyRashifalHome"
+                                                {% if data.page_type == "DailyRashifalHome" %}selected="selected"{% endif %}>
+                                            DailyRashifalHome
+                                        </option>
+                                        <option value="WeeklyRashifalHome"
+                                                {% if data.page_type == "WeeklyRashifalHome" %}selected="selected"{% endif %}>
+                                            WeeklyRashifalHome
+                                        </option>
+                                        <option value="MonthlyRashifalHome"
+                                                {% if data.page_type == "MonthlyRashifalHome" %}selected="selected"{% endif %}>
+                                            MonthlyRashifalHome
+                                        </option>
+                                        <option value="YearlyRashifalHome"
+                                                {% if data.page_type == "YearlyRashifalHome" %}selected="selected"{% endif %}>
+                                            YearlyRashifalHome
+                                        </option>
+                                        <option value="DailyRashifal"
+                                                {% if data.page_type == "DailyRashifal" %}selected="selected"{% endif %}>
+                                            DailyRashifal
+                                        </option>
+                                        <option value="DailyRashifalZodiac"
+                                                {% if data.page_type == "DailyRashifalZodiac" %}selected="selected"{% endif %}>
+                                            DailyRashifalZodiac
+                                        </option>
+                                        <option value="WeeklyRashifal"
+                                                {% if data.page_type == "WeeklyRashifal" %}selected="selected"{% endif %}>
+                                            WeeklyRashifal
+                                        </option>
+                                        <option value="WeeklyRashifalZodiac"
+                                                {% if data.page_type == "WeeklyRashifalZodiac" %}selected="selected"{% endif %}>
+                                            WeeklyRashifalZodiac
+                                        </option>
+                                        <option value="MonthlyRashifal"
+                                                {% if data.page_type == "MonthlyRashifal" %}selected="selected"{% endif %}>
+                                            MonthlyRashifal
+                                        </option>
+                                        <option value="MonthlyRashifalZodiac"
+                                                {% if data.page_type == "Zodiac" %}selected="selected"{% endif %}>
+                                            Zodiac
+                                        </option>
+                                        <option value="YearlyRashifal"
+                                                {% if data.page_type == "YearlyRashifal" %}selected="selected"{% endif %}>
+                                            YearlyRashifal
+                                        </option>
+                                        <option value="YearlyRashifalZodiac"
+                                                {% if data.page_type == "YearlyRashifalZodiac" %}selected="selected"{% endif %}>
+                                            YearlyRashifalZodiac
+                                        </option>
+                                        <option value="Contact"
+                                                {% if data.page_type == "Contact" %}selected="selected"{% endif %}>
+                                            Contact
+                                        </option>
+                                        <option value="Group"
+                                                {% if data.page_type == "Group" %}selected="selected"{% endif %}>
+                                            Group
+                                        </option>
+                                        <option value="Photo"
+                                                {% if data.page_type == "Photo" %}selected="selected"{% endif %}>
+                                            Photo
+                                        </option>
+                                        <option value="PhotoData"
+                                                {% if data.page_type == "PhotoData" %}selected="selected"{% endif %}>
+                                            PhotoData
+                                        </option>
+                                        <option value="Video"
+                                                {% if data.page_type == "Video" %}selected="selected"{% endif %}>
+                                            Video
+                                        </option>
+                                        <option value="VideoData"
+                                                {% if data.page_type == "VideoData" %}selected="selected"{% endif %}>
+                                            VideoData
+                                        </option>
+                                        <option value="SarbeswarJyotish"
+                                                {% if data.page_type == "SarbeswarJyotish" %}selected="selected"{% endif %}>
+                                            SarbeswarJyotish
+                                        </option>
+                                        <option value="HariJyotish"
+                                                {% if data.page_type == "HariJyotish" %}selected="selected"{% endif %}>
+                                            HariJyotish
+                                        </option>
+                                        <option value="MahadevJyotish"
+                                                {% if data.page_type == "MahadevJyotish" %}selected="selected"{% endif %}>
+                                            MahadevJyotish
+                                        </option>
+                                        <option value="JyotishJyotish"
+                                                {% if data.page_type == "JyotishJyotish" %}selected="selected"{% endif %}>
+                                            JyotishJyotish
+                                        </option>
+                                        <option value="PashupatiJyotish"
+                                                {% if data.page_type == "PashupatiJyotish" %}selected="selected"{% endif %}>
+                                            PashupatiJyotish
+                                        </option>
+                                        <option value="GuruJyotish"
+                                                {% if data.page_type == "GuruJyotish" %}selected="selected"{% endif %}>
+                                            GuruJyotish
+                                        </option>
+                                        <option value="OmJyotish"
+                                                {% if data.page_type == "OmJyotish" %}selected="selected"{% endif %}>
+                                            OmJyotish
+                                        </option>
+                                        {% comment %} <option value="Documents" {% if data.page_type == "Documents" %}selected="selected"{% endif %}>
+                                                                        Documents
+                                                                    </option>
+                                                                    
+                                                                    <option value="Our Service" {% if data.page_type == "Our Service" %}selected="selected"{% endif %}>
+                                                                        Our Service
+                                                                    </option>
+                                                                    <option value="Requirement" {% if data.page_type == "Requirement" %}selected="selected"{% endif %}>
+                                                                        Requirement
+                                                                    </option>
+                                                                    <option value="Talent" {% if data.page_type == "Talent" %}selected="selected"{% endif %}>
+                                                                        Talent
+                                                                    </option>
+                                                                    <option value="Job Vacancy" {% if data.page_type == "Job Vacancy" %}selected="selected"{% endif %}>
+                                                                        Job Vacancy
+                                                                    </option>
+                                                                    <option value="Procedure" {% if data.page_type == "Procedure" %}selected="selected"{% endif %}>
+                                                                        Procedure
+                                                                    </option>
+                                                                    <option value="Instructors" {% if data.page_type == "Instructors" %}selected="selected"{% endif %}>
+                                                                        Instructors
+                                                                    </option>
+                                                                    <option value="Job List" {% if data.page_type == "Job List" %}selected="selected"{% endif %}>
+                                                                        Job List
+                                                                    </option>
+                                                                    <option value="Clients Say" {% if data.page_type == "Clients Say" %}selected="selected"{% endif %}>
+                                                                        Clients Say
+                                                                    </option>
+                                                                    <option value="Home1" {% if data.page_type == "Home1" %}selected="selected"{% endif %}>
+                                                                        Home1
+                                                                    </option>
+                                                                    <option value="Documents 1" {% if data.page_type == "Documents 1" %}selected="selected"{% endif %}>
+                                                                        Documents 1
+                                                                    </option>
+                                                                    <option value="Client" {% if data.page_type == "Client" %}selected="selected"{% endif %}>
+                                                                        Client
+                                                                    </option>
+                                                                    <option value="Job3" {% if data.page_type == "Job3" %}selected="selected"{% endif %}>
+                                                                        Job3
+                                                                    </option>
+                                                                    <option value="Client1" {% if data.page_type == "Client1" %}selected="selected"{% endif %}>
+                                                                        Client1
+                                                                    </option>
+                                                                    <option value="Client2" {% if data.page_type == "Client2" %}selected="selected"{% endif %}>
+                                                                        Client2
+                                                                    </option>
+                                                                    <option value="Legal Document" {% if data.page_type == "Legal Document" %}selected="selected"{% endif %}>
+                                                                        Legal Document
+                                                                    </option>
+                                                                    <option value="Message" {% if data.page_type == "Message" %}selected="selected"{% endif %}>
+                                                                        Message
+                                                                    </option>
+                                                                    <option value="Job Details" {% if data.page_type == "Job Details" %}selected="selected"{% endif %}>
+                                                                        Job Details
+                                                                    </option>
+                                                                    <option value="HIGHLYSKILLED" {% if data.page_type == "HIGHLYSKILLED" %}selected="selected"{% endif %}>
+                                                                        HIGHLYSKILLED
+                                                                    </option>
+                                                                    <option value="All detail" {% if data.page_type == "All detail" %}selected="selected"{% endif %}>
+                                                                        All detail
+                                                                    </option>
+                                                                    <option value="SKILLED 4" {% if data.page_type == "SKILLED 4" %}selected="selected"{% endif %}>
+                                                                        SKILLED 4
+                                                                    </option>
+                                                                    <option value="Our Instructors" {% if data.page_type == "Our Instructors" %}selected="selected"{% endif %}>
+                                                                        Our Instructors
+                                                                    </option>
+                                                                    <option value="Instructors" {% if data.page_type == "Instructors" %}selected="selected"{% endif %}>
+                                                                        Instructors
+                                                                    </option>
+                                                                    <option value="Countries" {% if data.page_type == "Countries" %}selected="selected"{% endif %}>
+                                                                        Countries
+                                                                    </option>
+                                                                    <option value="Service 1" {% if data.page_type == "Service 1" %}selected="selected"{% endif %}>
+                                                                        Service 1
+                                                                    </option>
+                                                                    <option value="Why" {% if data.page_type == "Why" %}selected="selected"{% endif %}>
+                                                                        Why
+                                                                    </option>
+                                                                    <option value="Why 2" {% if data.page_type == "Why 2" %}selected="selected"{% endif %}>
+                                                                        Why 2
+                                                                    </option>
+                                        {% endcomment %}
+                                    </select>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label class="mr-2">Parent:</label>
+                                    <div class="col-1">
+                                        <input type="number" name="Parent" value="{{ parent_id }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Title:</label>
+                                    <div class="col-6">
+                                        <input type="text" name="title" value="{{ data.title }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Short Description:</label>
+                                    <div class="col-10">
+                                        <textarea name="short_desc"
+                                                  class="summernote"
+                                                  id="summernote"
+                                                  style="height: 150px;
+                                                         resize: vertical">{{ data.short_desc }}</textarea>
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Description:</label>
+                                    <div class="col-10">
+                                        <textarea name="desc"
+                                                  class="summernote"
+                                                  id="summernote"
+                                                  style="height: 180px;
+                                                         resize: vertical">{{ data.desc }}</textarea>
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Description1:</label>
+                                    <div class="col-10">
+                                        <textarea name="desc1"
+                                                  style="height: 180px;
+                                                         resize: vertical">{{ data.desc1 }}</textarea>
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">PhotoDate:</label>
+                                    <div class="col-10">
+                                        <input type="date"
+                                               id="photodate"
+                                               name="photodate"
+                                               value="{{ existing_photodate }}">
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Video:</label>
+                                    <div class="col-10">
+                                        <input type="file" name="video_file">
+                                        {{ data.video_file }}
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-1">Meta Title:</label>
+                                    <div class="col-4">
+                                        <input type="text" name="meta_title" value="{{ data.meta_title }}" />
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <label class="mr-1">Meta Keyword:</label>
+                                    <div class="col-4">
+                                        <input type="text" name="meta_keyword" value="{{ data.meta_keyword }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Banner Image:</label>
+                                    <div class="col-4">
+                                        <input type="file" name="bannerimage" value="{{ data.bannerimage }}" />
+                                        {% if data.bannerimage %}
+                                            <img src="{{ data.bannerimage.url }}" style="max-width: 50%; height: auto" />
+                                        {% endif %}
+                                    </div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label class="mr-2">Icon Image:</label>
+                                    <div class="col-4">
+                                        <input type="file" name="icon_image" value="{{ data.icon_image }}" />
+                                        {% if data.icon_image %}
+                                            <img src="{{ data.icon_image.url }}" style="max-width: 50%; height: auto" />
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Slider Image:</label>
+                                    <div class="col-4">
+                                        <input type="file" name="slider_image" value="{{ data.slider_image }}" />
+                                        {% if data.slider_image %}
+                                            <img src="{{ data.slider_image.url }}"
+                                                 style="max-width: 50%;
+                                                        height: auto" />
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-6"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="col-6 mt-5">
+                                    <div class="col-12 p-2">
+                                        <label>Brochure</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="file" name="brochure">
+                                        {% if data.brochure %}
+                                            <a href="{{ data.brochure.url }}" target="_blank">{{ data.brochure }}
+                                                {% comment %} <img src="{{ obj.brochure.url }}" style="max-width: 50%; height: auto"> {% endcomment %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="container">
+                                            <div class="row"></div>
+                                        </div>
+                                        <div class="col-6 mt-5">
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary mx-4 btn-lg">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
